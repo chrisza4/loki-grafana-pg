@@ -66,3 +66,19 @@ loki:
     replicas: 0
   chunksCache:
     allocatedMemory: 1024
+
+grafana:
+  adminUser: admin
+  adminPassword: strongpassword
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Loki
+          type: loki
+          url: http://{{ .Release.Name }}-loki-gateway.{{ .Release.Namespace }}.svc.cluster.local
+          isDefault: true
+          jsonData:
+            httpHeaderName1: "X-Scope-OrgId"
+          secureJsonData:
+            httpHeaderValue1: "foo"
