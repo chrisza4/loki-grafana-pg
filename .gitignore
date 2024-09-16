@@ -34,3 +34,6 @@ Session.vim
 **/charts/*.tgz
 
 .history
+.env
+output.yaml
+.k8s
